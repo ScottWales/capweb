@@ -1,0 +1,20 @@
+label,input{
+    width:200px;
+    display:block;
+    float:left;
+    margin-bottom:10px;
+}
+label {
+    width:150px;
+    text-align:right;
+    padding-right:10px;
+    margin-top:2px;
+}
+br {
+    clear:left;
+}
+fieldset{
+    border:0px;
+    margin-left:0px;
+    padding:0px;
+}
