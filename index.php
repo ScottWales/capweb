@@ -1,4 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<?php
+
+require('view/web.php');
+require('model/rose/rose.php');
+
+$view = new Cap\Webview();
+$model = new Rose\Model();
+
+?>
+
 <html lang="en-GB">
     <head>
         <title>Layout test for CAP interface</title>
@@ -14,6 +25,10 @@
             $(function(){
               $("#section-tabs").tabs();
               });
+
+            <?php
+                $view->LayoutJS($model);
+            ?>
         </script>
     </head>
     <body>
@@ -33,6 +48,9 @@
             <div id="section-tabs">
                 <ul>
                     <!-- <li><a id="tab-id" href="#tab-div">tab-name</a></li> -->
+                    <?php
+                        $view->LayoutTabHeaders($model);
+                    ?>
                 </ul>
 
                 <!--
@@ -52,6 +70,9 @@
                     </fieldset>
                 </div>
                 -->
+                <?php
+                    $view->LayoutTabs($model);
+                ?>
 
             </div>
         </form>
