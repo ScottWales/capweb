@@ -1,0 +1,11 @@
+Web interface for the Central Ancillary Program
+
+This interface is designed to be a web interface to the CAP program for generating climate ancillary files. Intended users are climate scientists requiring custom ancillary files for Unified Model simulations.
+
+To generate a set of ancillary files a user enters the configuration into the web form, modifying a set of sensible defaults, then submits the form. The files are generated remotely then made available on a ftp site for download.
+
+An objective is to have the web interface configurable by a set of metadata files, preferably compatabile with the ROSE tool, so that the configuration can easily be altered to add new features rather than having these hardcoded into the interface.
+
+The interface will generate a script to be submitted to a remote server to generate the ancillary files, which will be copied to a ftp server. Generated scripts should be as secure as possible.
+
+Advanced features not useful for the majority of users should be hidden by default.
