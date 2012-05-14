@@ -30,7 +30,6 @@ function ReadSettingMetadata($section){
             $section->settings[$settingname] = new ConfigSetting($settingname,$section);
         }
         $section->settings[$settingname]->SetMetadata($settingmeta);
-        echo "\n\n";
     }
 };
 
