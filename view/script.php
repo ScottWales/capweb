@@ -24,11 +24,12 @@ EOS;
         # Create the script variables for each section
         echo('export '.escapeshellcmd($section->ScriptVariable())."=\\\n");
         array_walk($section->settings,'DisplaySettingCallback',$this);
-        echo("\n");
+        echo(";\n");
     }
     function DisplaySetting($setting,$settingname){
-        echo(escapeshellarg(escapeshellcmd($setting->ScriptVariable()))." ".
-             escapeshellarg(escapeshellcmd($setting->ScriptValue()))." \\\n");
+        $variable = escapeshellarg("--".escapeshellcmd($setting->ScriptVariable()));
+        $value = escapeshellarg(escapeshellcmd($setting->Value()));
+        echo("$variable=$value\\\n");
     }
 }
 

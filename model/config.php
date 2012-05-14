@@ -60,6 +60,7 @@ class ConfigSetting {
     public $section; // The section that owns this setting
 
     public $value; // Current value
+    public $scriptvariable;
 
     function __construct($id,$section){
         $this->id=$id;
@@ -85,10 +86,10 @@ class ConfigSetting {
         return $this->id;
     }
     function SetMetadata($metadata){
-        $this->name = $metadata['name'];
-        $this->tooltip = $metadata['tooltip'];
-        $this->type = $metadata['type'];
-        $this->scriptvariable = $metadata['script variable'];
+        if (array_key_exists('name',$metadata)) $this->name = $metadata['name'];
+        if (array_key_exists('tooltip',$metadata)) $this->name = $metadata['tooltip'];
+        if (array_key_exists('type',$metadata)) $this->name = $metadata['type'];
+        if (array_key_exists('script variable',$metadata)) $this->name = $metadata['script variable'];
     }
 };
 
