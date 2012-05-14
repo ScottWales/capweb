@@ -10,7 +10,6 @@ class Model {
     }  
 
     function LoadPOST($post){
-        print_r($post);
         // Model values input on the webform have field ids like input/$section/$field
         foreach ($post as $key=>$value){
             $parts = explode("/",$key);
