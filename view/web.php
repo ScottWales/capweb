@@ -71,8 +71,10 @@ EOS;
         array_walk($model->sections,'DisplaySectionCallback',$this);
         echo <<<EOS
         </div>
+        <div>
         <input type="submit" name="Submit" value="Submit"><br>
         <input type="submit" name="Reset" value="Reset"><br>
+        </div>
         </form>
     </body>\n
 EOS;
