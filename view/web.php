@@ -96,13 +96,13 @@ EOS;
     // Display a single setting
     function DisplaySetting(ConfigSetting $setting,$settingname){
         echo <<<EOS
-            <label  for='input-{$setting->Key()}'
+            <label  for='input/{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     >
                     {$setting->Name()}
             </label>
-            <input  id='input-{$setting->Key()}' 
-                    name='input-{$setting->Key()}'
+            <input  id='input/{$setting->Key()}' 
+                    name='input/{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     value='{$setting->Value()}'
                     >

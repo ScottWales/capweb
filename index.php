@@ -17,6 +17,10 @@ if (!isset($_SESSION['model'])){
     $model=$_SESSION['model'];
 }
 
+if (isset($_POST)){
+    $model->LoadPOST($_POST);
+}
+
 if (isset($_POST['Submit'])){
     // Create the script
     $scriptview = new ScriptView();
