@@ -1,0 +1,8 @@
+= Submit is showing only 'export USER=\'=
+
+= No verification of inputs =
+E.g grid latitude_points=10 submits
+
+= Richer input for options =
+Allow for selections of checkboxes &c in metadata
+
