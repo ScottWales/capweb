@@ -104,13 +104,13 @@ EOS;
 
     function DisplayTextBox(ConfigSetting $setting){
         echo <<<EOS
-            <label  for='input/{$setting->Key()}'
+            <label  for='input-{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     >
                     {$setting->Name()}
             </label>
-            <input  id='input/{$setting->Key()}' 
-                    name='input/{$setting->Key()}'
+            <input  id='input-{$setting->Key()}' 
+                    name='input-{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     value='{$setting->Value()}'
                     >
@@ -121,17 +121,17 @@ EOS;
         // The hidden input ensures a value is POSTed if the checkbox isn't checked
         $checked=($setting->Value()==="true")?'checked':'';
         echo <<<EOS
-            <label  for='input/{$setting->Key()}'
+            <label  for='input-{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     >
                     {$setting->Name()}
             </label>
             <input  type='hidden'
-                    name='input/{$setting->Key()}'
+                    name='input-{$setting->Key()}'
                     value='false'
                     >
-            <input  id='input/{$setting->Key()}' 
-                    name='input/{$setting->Key()}'
+            <input  id='input-{$setting->Key()}' 
+                    name='input-{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     value='true'
                     type='checkbox'

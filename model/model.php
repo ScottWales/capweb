@@ -12,7 +12,7 @@ class Model {
     function LoadPOST($post){
         // Model values input on the webform have field ids like input/$section/$field
         foreach ($post as $key=>$value){
-            $parts = explode("/",$key);
+            $parts = explode("-",$key);
             // Ignore if doesn't start with input or length != 3
             if (count($parts)!==3) continue;
             if ($parts[0]!=="input") continue;

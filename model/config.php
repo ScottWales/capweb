@@ -65,7 +65,7 @@ class ConfigSetting {
         $this->section=$section;
     }
     function Key(){
-        return "{$this->section->id}/{$this->id}";
+        return "{$this->section->id}-{$this->id}";
     }
     function Name(){
         if (isset($this->name)) return $this->name;
