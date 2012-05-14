@@ -95,6 +95,14 @@ EOS;
 
     // Display a single setting
     function DisplaySetting(ConfigSetting $setting){
+        if ($setting->type === "boolean"){
+            $this->DisplayCheckBox($setting);
+        } else {
+            $this->DisplayTextBox($setting);
+        }
+    }
+
+    function DisplayTextBox(ConfigSetting $setting){
         echo <<<EOS
             <label  for='input/{$setting->Key()}'
                     title='{$setting->Tooltip()}'
@@ -105,6 +113,24 @@ EOS;
                     name='input/{$setting->Key()}'
                     title='{$setting->Tooltip()}'
                     value='{$setting->Value()}'
+                    >
+            <br>\n
+EOS;
+    }
+    function DisplayCheckBox(ConfigSetting $setting){
+        $checked=($setting->Value()==="true")?'checked':'';
+        echo <<<EOS
+            <label  for='input/{$setting->Key()}'
+                    title='{$setting->Tooltip()}'
+                    >
+                    {$setting->Name()}
+            </label>
+            <input  id='input/{$setting->Key()}' 
+                    name='input/{$setting->Key()}'
+                    title='{$setting->Tooltip()}'
+                    value='true'
+                    type='checkbox'
+                    $checked
                     >
             <br>\n
 EOS;
