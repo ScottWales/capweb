@@ -41,12 +41,10 @@ class ConfigSection {
     }
 
     function SetMetadata($metadata){
-        $this->name = $metadata['name'];
-        $this->tooltip = $metadata['tooltip'];
-        $this->scriptvariable = $metadata['script variable'];
-        if (array_key_exists('metadata file',$metadata)){
-        $this->settingmetadata = $metadata['metadata file'];
-        }
+        if (array_key_exists('name',$metadata)) $this->name = $metadata['name'];
+        if (array_key_exists('tooltip',$metadata)) $this->tooltip = $metadata['tooltip'];
+        if (array_key_exists('script variable',$metadata)) $this->scriptvariable = $metadata['script variable'];
+        if (array_key_exists('metadata file',$metadata)) $this->settingmetadata = $metadata['metadata file'];
     }
 };
 
@@ -87,9 +85,9 @@ class ConfigSetting {
     }
     function SetMetadata($metadata){
         if (array_key_exists('name',$metadata)) $this->name = $metadata['name'];
-        if (array_key_exists('tooltip',$metadata)) $this->name = $metadata['tooltip'];
-        if (array_key_exists('type',$metadata)) $this->name = $metadata['type'];
-        if (array_key_exists('script variable',$metadata)) $this->name = $metadata['script variable'];
+        if (array_key_exists('tooltip',$metadata)) $this->tooltip = $metadata['tooltip'];
+        if (array_key_exists('type',$metadata)) $this->type = $metadata['type'];
+        if (array_key_exists('script variable',$metadata)) $this->scriptvariable = $metadata['script variable'];
     }
 };
 
