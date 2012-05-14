@@ -20,13 +20,13 @@ EOS;
         readfile('view/script.sh');
     }
 
-    function DisplaySection($section,$sectionname){
+    function DisplaySection($section){
         # Create the script variables for each section
         echo('export '.escapeshellcmd($section->ScriptVariable())."=\\\n");
         array_walk($section->settings,'DisplaySettingCallback',$this);
         echo(";\n");
     }
-    function DisplaySetting($setting,$settingname){
+    function DisplaySetting($setting){
         $variable = escapeshellarg("--".escapeshellcmd($setting->ScriptVariable()));
         $value = escapeshellarg(escapeshellcmd($setting->Value()));
         echo("$variable=$value\\\n");

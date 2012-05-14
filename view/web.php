@@ -79,7 +79,7 @@ EOS;
     }
 
     // Display a section tab
-    function DisplaySection(ConfigSection $section,$sectionname){
+    function DisplaySection(ConfigSection $section){
         $key=htmlspecialchars($section->Key());
         echo <<<EOS
             <div id="tab-$key">
@@ -94,7 +94,7 @@ EOS;
     }
 
     // Display a single setting
-    function DisplaySetting(ConfigSetting $setting,$settingname){
+    function DisplaySetting(ConfigSetting $setting){
         echo <<<EOS
             <label  for='input/{$setting->Key()}'
                     title='{$setting->Tooltip()}'
@@ -112,9 +112,9 @@ EOS;
 };
 
 function DisplaySectionCallback(ConfigSection $section,$sectionname,$class){
-    $class->DisplaySection($section,$sectionname);
+    $class->DisplaySection($section);
 }
 function DisplaySettingCallback(ConfigSetting $setting,$settingname,$class){
-    $class->DisplaySetting($setting,$settingname);
+    $class->DisplaySetting($setting);
 }
 ?>
