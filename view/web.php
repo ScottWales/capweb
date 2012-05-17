@@ -128,36 +128,43 @@ EOS;
     }
 
     function DisplayTextBox(ConfigSetting $setting){
+        $key = htmlspecialchars($setting->Key());
+        $tooltip = htmlspecialchars($setting->Tooltip());
+        $name = htmlspecialchars($setting->Name());
+        $value = htmlspecialchars($setting->Value());
         echo <<<EOS
-            <label  for='input-{$setting->Key()}'
-                    title='{$setting->Tooltip()}'
+            <label  for='input-{$key}'
+                    title='{$tooltip}'
                     >
-                    {$setting->Name()}
+                    {$name}
             </label>
-            <input  id='input-{$setting->Key()}' 
-                    name='input-{$setting->Key()}'
-                    title='{$setting->Tooltip()}'
-                    value='{$setting->Value()}'
+            <input  id='input-{$key}' 
+                    name='input-{$key}'
+                    title='{$tooltip}'
+                    value='{$value}'
                     >
             <br>\n
 EOS;
     }
     function DisplayCheckBox(ConfigSetting $setting){
         // The hidden input ensures a value is POSTed if the checkbox isn't checked
-        $checked=($setting->Value()==="true")?'checked':'';
+        $key = htmlspecialchars($key);
+        $tooltip = htmlspecialchars($tooltip);
+        $name = htmlspecialchars($name);
+        $checked=($value==="true")?'checked':'';
         echo <<<EOS
-            <label  for='input-{$setting->Key()}'
-                    title='{$setting->Tooltip()}'
+            <label  for='input-{$key}'
+                    title='{$tooltip}'
                     >
-                    {$setting->Name()}
+                    {$name}
             </label>
             <input  type='hidden'
-                    name='input-{$setting->Key()}'
+                    name='input-{$key}'
                     value='false'
                     >
-            <input  id='input-{$setting->Key()}' 
-                    name='input-{$setting->Key()}'
-                    title='{$setting->Tooltip()}'
+            <input  id='input-{$key}' 
+                    name='input-{$key}'
+                    title='{$tooltip}'
                     value='true'
                     type='checkbox'
                     $checked
@@ -170,6 +177,7 @@ EOS;
         $key = htmlspecialchars($setting->Key());
         $tooltip = htmlspecialchars($setting->Tooltip());
         $name = htmlspecialchars($setting->Name());
+        $value = htmlspecialchars($setting->Value());
         echo <<<EOS
             <label  for='input-{$key}'
                     title='{$tooltip}'
@@ -179,6 +187,7 @@ EOS;
             <select id='input-{$key}' 
                     name='input-{$key}'
                     title='{$tooltip}'
+                    value='{$value}'
                     >
 EOS;
         foreach($setting->availablevalues as $value){
