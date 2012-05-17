@@ -10,6 +10,9 @@ class ConfigSection {
     public $tooltip;
     // Variable to store arguments in the script, default $id
     public $scriptvariable;
+    // Should this section always be shown?
+    public $alwaysenable;
+    public $enabled;
 
     public $settingmetadata; // File containing setting metadata
 
@@ -19,6 +22,7 @@ class ConfigSection {
     function __construct($id){
         $this->id=$id;
         $this->settings = array();
+        $this->enable = false;
     }
     function Key(){
         return $this->id;
@@ -39,12 +43,20 @@ class ConfigSection {
         if (isset($this->settingmetadata)) return $this->settingmetadata;
         return "metadata/{$this->id}.ini";
     }
+    function AlwaysEnable(){
+        if (isset($this->alwaysenable) && $this->alwaysenable==="true") return true;
+        return false;
+    }
+    function IsEnabled(){
+        return $this->AlwaysEnable() || ($this->enable===true);
+    }
 
     function SetMetadata($metadata){
         if (array_key_exists('name',$metadata)) $this->name = $metadata['name'];
         if (array_key_exists('tooltip',$metadata)) $this->tooltip = $metadata['tooltip'];
         if (array_key_exists('script variable',$metadata)) $this->scriptvariable = $metadata['script variable'];
         if (array_key_exists('metadata file',$metadata)) $this->settingmetadata = $metadata['metadata file'];
+        if (array_key_exists('always enable',$metadata)) $this->alwaysenable = $metadata['always enable'];
     }
 };
 

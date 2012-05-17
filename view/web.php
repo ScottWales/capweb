@@ -85,7 +85,28 @@ EOS;
         $key=htmlspecialchars($section->Key());
         echo <<<EOS
             <div id="tab-$key">
-                <fieldset>
+EOS;
+        // Display a checkbox to enable the section
+        if (!$section->AlwaysEnable()){
+            $name = htmlspecialchars($section->Name());
+            $checked=$section->IsEnabled()?"'checked'":"";
+            echo <<<EOS
+            <label  for='section-enable-$key'
+                    title='Enable section $name'>
+            Enable section</label>
+            <input  type='hidden'
+                    name='section-enable-$key'
+                    value='false'>
+            <input  type='checkbox'
+                    name='section-enable-$key'
+                    id='section-enable-$key'
+                    title='Enable section $name'
+                    value='true'
+                    $checked><br>
+EOS;
+        }
+        echo <<<EOS
+                <fieldset id='fieldset-$key'>
                     <legend></legend>\n
 EOS;
         array_walk($section->settings,'DisplaySettingCallback',$this);
