@@ -48,7 +48,7 @@ class ConfigSection {
         return false;
     }
     function IsEnabled(){
-        return $this->AlwaysEnable() || ($this->enable===true);
+        return $this->AlwaysEnable() || ($this->enabled===true);
     }
 
     function SetMetadata($metadata){
@@ -71,6 +71,7 @@ class ConfigSetting {
 
     public $value; // Current value
     public $scriptvariable;
+    public $availablevalues;
 
     function __construct($id,$section){
         $this->id=$id;
@@ -100,8 +101,10 @@ class ConfigSetting {
         if (array_key_exists('tooltip',$metadata)) $this->tooltip = $metadata['tooltip'];
         if (array_key_exists('type',$metadata)) $this->type = $metadata['type'];
         if (array_key_exists('script variable',$metadata)) $this->scriptvariable = $metadata['script variable'];
+        if (array_key_exists('available values',$metadata)) {
+            $this->availablevalues = ($metadata['available values']);
+        }
     }
 };
-
 
 ?>
