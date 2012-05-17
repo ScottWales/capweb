@@ -120,6 +120,8 @@ EOS;
     function DisplaySetting(ConfigSetting $setting){
         if ($setting->type === "boolean"){
             $this->DisplayCheckBox($setting);
+        } else if (isset($setting->availablevalues)) {
+            $this->DisplayDropBox($setting);
         } else {
             $this->DisplayTextBox($setting);
         }
@@ -160,6 +162,31 @@ EOS;
                     type='checkbox'
                     $checked
                     >
+            <br>\n
+EOS;
+    }
+    function DisplayDropBox(ConfigSetting $setting){
+        // The hidden input ensures a value is POSTed if the checkbox isn't checked
+        $key = htmlspecialchars($setting->Key());
+        $tooltip = htmlspecialchars($setting->Tooltip());
+        $name = htmlspecialchars($setting->Name());
+        echo <<<EOS
+            <label  for='input-{$key}'
+                    title='{$tooltip}'
+                    >
+                    {$name}
+            </label>
+            <select id='input-{$key}' 
+                    name='input-{$key}'
+                    title='{$tooltip}'
+                    >
+EOS;
+        foreach($setting->availablevalues as $value){
+            $value = htmlspecialchars($value);
+            echo("<option value='$value'>$value</option>\n");
+        }
+        echo <<<EOS
+            </select>
             <br>\n
 EOS;
     }
