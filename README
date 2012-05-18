@@ -9,3 +9,6 @@ An objective is to have the web interface configurable by a set of metadata file
 The interface will generate a script to be submitted to a remote server to generate the ancillary files, which will be copied to a ftp server. Generated scripts should be as secure as possible.
 
 Advanced features not useful for the majority of users should be hidden by default.
+
+To run unit tests ensure PHPUnit is installed and run
+$ make check
