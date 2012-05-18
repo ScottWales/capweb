@@ -33,7 +33,7 @@ if (isset($_POST['Submit'])){
     header('Location: '.$_SERVER['REQUEST_URI']);
 } else {
     // Display on website if not submitted
-    $webview = new Webview();
+    $webview = new WebView();
     $webview->Display($model);
 }
 ?>

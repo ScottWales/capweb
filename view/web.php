@@ -6,7 +6,7 @@
 require_once('model/model.php');
 require_once('model/config.php');
 
-class Webview {
+class WebView {
 
     /// Display the full page
     public function Display(Model $model){
