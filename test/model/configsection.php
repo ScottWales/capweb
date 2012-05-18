@@ -5,7 +5,7 @@ require_once('model/configsection.php');
 class ConfigSectionTest extends PHPUnit_Framework_TestCase {
 
     public function testDefaultConstructor(){
-        $id = "test_id<foo>%/\"\spe'cial\n;!@$#^*&^chars";
+        $id = "test_id<foo>%/\"\spe'cial\n;!@$#^*&-+=^chars";
         $section = new ConfigSection($id);
         $this->assertEquals($id,$section->Key());
         $this->assertEquals($id,$section->Name());

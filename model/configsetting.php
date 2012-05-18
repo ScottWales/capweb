@@ -32,6 +32,10 @@ class ConfigSetting {
         if (isset($this->tooltip)) return $this->tooltip;
         return $this->Name();
     }
+    function Type(){
+        if (isset($this->type)) return $this->type;
+        return "text";
+    }
     function ScriptVariable(){
         if (isset($this->scriptvariable)) return $this->scriptvariable;
         return $this->id;
