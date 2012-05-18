@@ -2,7 +2,8 @@
 
 // Read the metadata files
 require_once('model/model.php');
-require_once('model/config.php');
+require_once('model/configsection.php');
+require_once('model/configsetting.php');
 
 // Given the filename for the section metadata load all of the metadata for the model
 function ReadSectionMetadata(Model $model, $filename){

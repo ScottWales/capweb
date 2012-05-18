@@ -1,6 +1,7 @@
 <?php
 
-require_once('model/config.php');
+require_once('model/configsection.php');
+require_once('model/configsetting.php');
 
 class Model {
     public $sections;

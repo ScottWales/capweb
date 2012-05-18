@@ -1,7 +1,8 @@
 <?php
 
 require_once('model/model.php');
-require_once('model/config.php');
+require_once('model/configsection.php');
+require_once('model/configsetting.php');
 
 # Read settings from ini files
 function ReadIniConfig(Model $model, $filename){
