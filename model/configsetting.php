@@ -13,12 +13,12 @@ class ConfigSetting {
     public $scriptvariable;
     public $availablevalues;
 
-    function __construct($id,$section){
+    function __construct($id,ConfigSection $section){
         $this->id=$id;
         $this->section=$section;
     }
     function Key(){
-        return "{$this->section->id}-{$this->id}";
+        return "{$this->section->Key()}-{$this->id}";
     }
     function Name(){
         if (isset($this->name)) return $this->name;

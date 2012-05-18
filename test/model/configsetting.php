@@ -1,18 +1,20 @@
 <?php
 require_once('model/configsetting.php');
 
-class ConfigSectionMock {
-    public $id;
-};
-
 class ConfigSettingTest extends PHPUnit_Framework_TestCase {
     public function testDefaultConstructor(){
         $id = "test_id<foo>%/\"\spe'cial\n;!@$#^*&-+=^chars";
-        $section = new ConfigSectionMock;
-        $section->id = 'section'.$id;
+        $section = $this
+            ->getMockBuilder('ConfigSection')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $section
+            ->expects($this->any())
+            ->method('Key')
+            ->will($this->returnValue('section'.$id));
 
         $setting = new ConfigSetting($id,$section);
-        $this->assertEquals($section->id.'-'.$id,$setting->Key());
+        $this->assertEquals($section->Key().'-'.$id,$setting->Key());
         $this->assertEquals($id,$setting->Name());
         $this->assertEquals($id,$setting->ScriptVariable());
         $this->assertEquals("",$setting->Value());
@@ -63,8 +65,15 @@ class ConfigSettingTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testPrerequisite(){
-        $section = new ConfigSectionMock;
-        $section->id = "section";
+        $section = $this
+            ->getMockBuilder('ConfigSection')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $section
+            ->expects($this->any())
+            ->method('Key')
+            ->will($this->returnValue('section'));
+
         $a = new ConfigSetting("a",$section);
         $b = new ConfigSetting("b",$section);
 
