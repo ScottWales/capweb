@@ -11,7 +11,7 @@ session_start();
 if (!isset($_SESSION['model'])){
     $model = new Model();
     ReadSectionMetadata($model,'metadata/sections.ini');
-    ReadIniConfig($model,'conf/grid.conf');
+    ReadIniConfig($model,'conf/defaults.ini');
     $_SESSION['model']=$model;
 } else {
     $model=$_SESSION['model'];
