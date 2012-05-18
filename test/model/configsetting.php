@@ -61,4 +61,20 @@ class ConfigSettingTest extends PHPUnit_Framework_TestCase {
 
         return $setting;
     }
+
+    public function testPrerequisite(){
+        $section = new ConfigSectionMock;
+        $section->id = "section";
+        $a = new ConfigSetting("a",$section);
+        $b = new ConfigSetting("b",$section);
+
+        $metadata = array();
+        $metadata['prerequisite'] = array('section/a==value');
+        $b->SetMetadata($metadata);
+
+        $a->value = false;
+        $this->assertEquals(false,$b->IsEnabled());
+        $a->value = 'value';
+        $this->assertEquals(true,$b->IsEnabled());
+    }
 }

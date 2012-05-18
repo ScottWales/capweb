@@ -40,6 +40,9 @@ class ConfigSetting {
         if (isset($this->scriptvariable)) return $this->scriptvariable;
         return $this->id;
     }
+    function IsEnabled(){
+        return false;
+    }
     function SetMetadata($metadata){
         if (array_key_exists('name',$metadata)) $this->name = $metadata['name'];
         if (array_key_exists('tooltip',$metadata)) $this->tooltip = $metadata['tooltip'];
