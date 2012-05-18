@@ -148,9 +148,9 @@ EOS;
     }
     function DisplayCheckBox(ConfigSetting $setting){
         // The hidden input ensures a value is POSTed if the checkbox isn't checked
-        $key = htmlspecialchars($key);
-        $tooltip = htmlspecialchars($tooltip);
-        $name = htmlspecialchars($name);
+        $key = htmlspecialchars($setting->Key());
+        $tooltip = htmlspecialchars($setting->Tooltip());
+        $name = htmlspecialchars($setting->Name());
         $checked=($value==="true")?'checked':'';
         echo <<<EOS
             <label  for='input-{$key}'
