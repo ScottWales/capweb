@@ -6,8 +6,8 @@ require_once('model/configsection.php');
 require_once('model/configsetting.php');
 
 // Given the filename for the section metadata load all of the metadata for the model
-function ReadSectionMetadata(Model $model, $filename){
-    $ini = parse_ini_file($filename,true,INI_SCANNER_RAW);
+function ReadSectionMetadata(Model $model, $string){
+    $ini = parse_ini_string($string,true,INI_SCANNER_RAW);
 
     # Add the sections in the file to the model
     foreach($ini as $sectionname=>$sectionmeta){

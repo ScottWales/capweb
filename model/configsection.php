@@ -44,7 +44,7 @@ class ConfigSection {
         return "metadata/{$this->id}.ini";
     }
     function AlwaysEnable(){
-        if (isset($this->alwaysenable) && $this->alwaysenable==="true") return true;
+        if (isset($this->alwaysenable) && $this->alwaysenable===true) return true;
         return false;
     }
     function IsEnabled(){
@@ -56,7 +56,8 @@ class ConfigSection {
         if (array_key_exists('tooltip',$metadata)) $this->tooltip = $metadata['tooltip'];
         if (array_key_exists('script variable',$metadata)) $this->scriptvariable = $metadata['script variable'];
         if (array_key_exists('metadata file',$metadata)) $this->settingmetadata = $metadata['metadata file'];
-        if (array_key_exists('always enable',$metadata)) $this->alwaysenable = $metadata['always enable'];
+        if (array_key_exists('always enable',$metadata)) $this->alwaysenable = 
+             filter_var($metadata['always enable'],FILTER_VALIDATE_BOOLEAN,FILTER_NULL_ON_FAILURE);
     }
 };
 

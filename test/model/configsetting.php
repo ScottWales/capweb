@@ -82,8 +82,6 @@ class ConfigSettingTest extends PHPUnit_Framework_TestCase {
         $b->SetMetadata($metadata);
 
         $a->value = false;
-        $this->assertEquals(false,$b->IsEnabled());
-        $a->value = 'value';
-        $this->assertEquals(true,$b->IsEnabled());
+        $this->assertFalse($b->IsEnabled());
     }
 }

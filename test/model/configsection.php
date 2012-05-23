@@ -52,19 +52,20 @@ class ConfigSectionTest extends PHPUnit_Framework_TestCase {
      * @depends testSetMetadata
      */
     public function testSetEnable(ConfigSection $section){
+        // Always enable overrides enabled
         $metadata = array();
         $metadata['always enable'] = 'true';
         $section->SetMetadata($metadata);
         $section->enabled = false;
-        $this->assertEquals(true,$section->AlwaysEnable());
-        $this->assertEquals(true,$section->IsEnabled());
+        $this->assertTrue($section->AlwaysEnable());
+        $this->assertTrue($section->IsEnabled());
 
         $metadata = array();
         $metadata['always enable'] = 'false';
         $section->SetMetadata($metadata);
         $section->enabled = true;
-        $this->assertEquals(false,$section->AlwaysEnable());
-        $this->assertEquals(true,$section->IsEnabled());
+        $this->assertFalse($section->AlwaysEnable());
+        $this->assertTrue($section->IsEnabled());
     }
 };
 
