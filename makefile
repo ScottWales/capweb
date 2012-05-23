@@ -1,4 +1,4 @@
 .PHONY:check
 
 check:
-	phpunit --configuration phpunit.xml
+	phpunit --colors --configuration phpunit.xml
